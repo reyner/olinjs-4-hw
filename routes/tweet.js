@@ -11,7 +11,7 @@ exports.create = function(req, res){
 };
 
 exports.list = function(req, res){
-  Tweet.find({}).populate('user').exec(function (err, docs) {
+  Tweet.find({}).populate('user').sort("-_id").exec(function (err, docs) {
     if (err) return console.log('error', err);
     res.render('_twits', {tweets: docs, title: 'List of Tweets'});
   });

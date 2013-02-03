@@ -1,3 +1,6 @@
 each tweet, i in tweets
-  div OMG A TWIT by #{tweet.user.name}
-    p #{tweet.text}
+  div(class="tweet")
+    div(class="user")
+      | #{tweet.user.name}
+    div(class="text")
+      | #{tweet.text}

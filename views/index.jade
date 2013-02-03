@@ -1,13 +1,22 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}, #{loggedIn.name}
-  form(method='post', action='/tweets', id="composeTweetForm")
-    | Compose a Tweet
-    input(name='text', id="tweetInput")
-    input(type="hidden", name="uid", value="#{loggedIn._id}")
-    button('type='submit')
-      | Done
-  div(id="twStream")
-    include _twits
+  div(id="title")
+    h1= title
+  div(id="container")
+    div(id="leftNav")
+      form(method='post', action='/tweets', id="composeTweetForm")
+        input(type="hidden", name="uid", value="#{loggedIn._id}", id="uid")
+        div(id="composition")
+          div(id="composePrompt")
+            | Compose a Tweet as #{loggedIn.name}
+          div(id="textInput")
+            input(name='text', id="tweetInput")
+        div(id="button")
+          button('type='submit' id="submitButton")
+            | Done
+    div(id="twStream")
+      div(id="twHeader")
+        h2 Did you see my Tweets? Here are my Tweets.
+      div(id="StreamBody")
+        include _twits

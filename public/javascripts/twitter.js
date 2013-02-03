@@ -1,12 +1,23 @@
 $(function () {
+  if ($("#uid").val() == 0) {
+    $.get('/users/new', function(data) {
+      $('#leftNav').html(data);
+    });
+  }
+
   $('#composeTweetForm').on('submit', function () {
-    $.post("/tweets", $('#composeTweetForm').serialize());
+    if ($('#tweetInput').val().length > 140) {
+      $('#failure').show();
+    } else {
+      $.post("/tweets", $('#composeTweetForm').serialize());
+      $('#success').show();
+    }
     return false;
   })
 
   var twRefresh = function(){
     $.get('/tweets/list', function(data) {
-      $('#twStream').html(data);
+      $('#StreamBody').html(data);
     });
   };
   

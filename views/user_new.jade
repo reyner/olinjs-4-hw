@@ -1,10 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
   form(method='post', action='/users/new', id="newUserForm")
-    | What is your name?
+    | Who are you? 
     input(name='name', id="nameinput")
     button('type='submit')
       | Done
