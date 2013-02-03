@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}, #{loggedIn.name}
+  form(method='post', action='/tweets', id="composeTweetForm")
+    | Compose a Tweet
+    input(name='text', id="tweetInput")
+    input(type="hidden", name="uid", value="#{loggedIn._id}")
+    button('type='submit')
+      | Done
+  div(id="twStream")
+    include _twits

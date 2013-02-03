@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Users
+  a(href="/users/new") New
+  br
+  a(href="/") Home
+  p List of Users
+  div
+    each user, i in users
+      div(value=user) #{user.name}
